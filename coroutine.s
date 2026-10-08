@@ -73,6 +73,7 @@ counter:
     ret
 
 ;; rdi - procedure to start in a new coroutine
+public coroutine_go
 coroutine_go:
     cmp    QWORD [ctx_count], COROUTINES_CAPACITY
     jge    overflow_fk
@@ -103,6 +104,7 @@ overflow_fk:
     mov    rdi, 69
     syscall
 
+public coroutine_yield
 coroutine_yield:
     mov    rbx, [ctx_curr] 
     
@@ -123,6 +125,7 @@ coroutine_yield:
 
     ;;ret                               ;; so no need of ret due to the jump instruction above
 
+public coroutine_init
 coroutine_init:
     cmp QWORD [ctx_count], COROUTINES_CAPACITY
     jge overflow_fk
