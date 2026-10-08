@@ -132,7 +132,7 @@ coroutine_init:
 
     pop rax                             ;; return address is in rax now
 
-    mov [ctx_rsp+rbx*8], rax
+    mov [ctx_rsp+rbx*8], rsp
     mov [ctx_rbp+rbx*8], rbp
     mov [ctx_rip+rbx*8], rax
 
